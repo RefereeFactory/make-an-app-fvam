@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rootfield Farm — Fresh Potatoes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --soil:#3b2d20;
+  --soil-light:#6b5942;
+  --cream:#f7f1e6;
+  --cream-deep:#efe4cf;
+  --gold:#d79b2b;
+  --gold-deep:#b57c15;
+  --leaf:#6f8a46;
+  --leaf-deep:#53692f;
+  --shadow:0 12px 30px rgba(59,45,32,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  color:var(--soil);
+  background:var(--cream);
+  line-height:1.65;
+}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.2;font-weight:700}
+a{color:var(--gold-deep)}
+img{max-width:100%;display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+header.hero{
+  position:relative;
+  background:
+    radial-gradient(1200px 500px at 70% -10%, rgba(215,155,43,.25), transparent 60%),
+    linear-gradient(160deg,#4a3826,#2e2318);
+  color:var(--cream);
+  overflow:hidden;
+}
+.hero-inner{display:flex;flex-direction:column;gap:28px;padding:54px 0 64px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(247,241,230,.12);
+  border:1px solid rgba(247,241,230,.25);
+  padding:7px 14px;border-radius:999px;font-size:.82rem;
+  letter-spacing:.04em;width:max-content;
+}
+.hero h1{font-size:clamp(2.4rem,7vw,4.2rem);letter-spacing:-.01em}
+.hero h1 span{color:var(--gold)}
+.hero p.lead{font-size:1.14rem;max-width:560px;color:#e7ddca}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:12px 24px;border-radius:12px;
+  font-weight:600;font-size:1rem;cursor:pointer;border:none;
+  text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,background .2s;
+}
+.btn-primary{background:var(--gold);color:#2e2318}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(215,155,43,.4)}
+.btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(247,241,230,.4)}
+.btn-ghost:hover{background:rgba(247,241,230,.1)}
+.spuds{font-size:2.6rem;letter-spacing:4px}
+
+/* Sections */
+section{padding:60px 0}
+.eyebrow{color:var(--leaf-deep);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem}
+.section-head{max-width:620px;margin-bottom:36px}
+.section-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:10px 0 12px}
+.section-head p{color:var(--soil-light)}
+
+/* Varieties */
+.alt{background:var(--cream-deep)}
+.grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{
+  background:#fff;border-radius:18px;padding:26px;box-shadow:var(--shadow);
+  border:1px solid rgba(59,45,32,.06);transition:transform .18s ease;
+}
+.card:hover{transform:translateY(-4px)}
+.card .emoji{font-size:2.4rem}
+.card h3{font-size:1.3rem;margin:12px 0 8px}
+.card p{color:var(--soil-light);font-size:.96rem}
+.tag{display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;
+  background:var(--cream-deep);color:var(--leaf-deep);font-size:.8rem;font-weight:600}
+
+/* Shop / pay */
+.shop-panel{
+  background:linear-gradient(160deg,#fffdf8,#f3ead6);
+  border-radius:22px;padding:34px;box-shadow:var(--shadow);
+  border:1px solid rgba(59,45,32,.08);
+}
+[data-factory-pay]{display:flex;flex-direction:column;gap:14px}
+.factory-pay-item{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:#fff;border:1px solid rgba(59,45,32,.1);border-radius:14px;padding:18px 20px;
+}
+.factory-pay-name{font-weight:600;font-family:'Fraunces',serif;font-size:1.12rem}
+.factory-pay-price{color:var(--gold-deep);font-weight:700}
+.factory-pay-btn{
+  background:var(--leaf);color:#fff;border:none;border-radius:10px;
+  padding:11px 22px;min-height:44px;font-weight:600;cursor:pointer;transition:background .2s;
+}
+.factory-pay-btn:hover{background:var(--leaf-deep)}
+.shop-note{color:var(--soil-light);font-size:.9rem;margin-top:16px;text-align:center}
+
+/* Delivery checker */
+.checker{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.checker input{
+  flex:1;min-width:180px;min-height:48px;padding:12px 16px;border-radius:12px;
+  border:1.5px solid rgba(59,45,32,.2);font-size:1rem;font-family:inherit;background:#fff;
+}
+.checker input:focus{outline:none;border-color:var(--gold)}
+.result{margin-top:18px;padding:16px 18px;border-radius:12px;font-weight:500;display:none}
+.result.show{display:block}
+.result.ok{background:#e9f1dc;color:var(--leaf-deep);border:1px solid #cdddb0}
+.result.no{background:#f7e6d8;color:#9c5a1e;border:1px solid #ecc9a6}
+.result.err{background:#f2e3e0;color:#9c3a2e;border:1px solid #e2bcb4}
+
+/* Form */
+.form-card{background:#fff;border-radius:20px;padding:30px;box-shadow:var(--shadow);max-width:560px}
+.field{margin-bottom:18px}
+label{display:block;font-weight:600;margin-bottom:7px;font-size:.95rem}
+input[type=text],input[type=email],input[type=tel],textarea{
+  width:100%;min-height:48px;padding:12px 15px;border-radius:12px;
+  border:1.5px solid rgba(59,45,32,.2);font-size:1rem;font-family:inherit;background:#fdfbf6;
+}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.check-row{display:flex;gap:10px;align-items:flex-start;margin:14px 0}
+.check-row input{width:20px;height:20px;margin-top:3px;flex-shrink:0}
+.check-row label{font-weight:400;font-size:.92rem;color:var(--soil-light)}
+.saveind{font-size:.88rem;color:var(--leaf-deep);min-height:20px;margin-top:8px}
+
+/* Steps */
+.steps{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.step{display:flex;gap:14px;align-items:flex-start}
+.step .num{
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;
+  background:var(--gold);color:#2e2318;font-weight:700;font-family:'Fraunces',serif;
+  display:flex;align-items:center;justify-content:center;
+}
+.step h3{font-size:1.1rem;margin-bottom:4px}
+.step p{color:var(--soil-light);font-size:.92rem}
+
+/* Owner */
+.owner{background:var(--soil);color:var(--cream)}
+.owner .section-head h2{color:var(--cream)}
+.owner .section-head p{color:#cbbfa8}
+.owner-box{background:rgba(247,241,230,.06);border:1px solid rgba(247,241,230,.15);border-radius:16px;padding:24px;max-width:560px}
+.owner-box input{background:rgba(247,241,230,.9);border:none;color:var(--soil)}
+.owner table{width:100%;border-collapse:collapse;margin-top:16px;font-size:.86rem}
+.owner th,.owner td{text-align:left;padding:8px 6px;border-bottom:1px solid rgba(247,241,230,.15)}
+.owner th{color:var(--gold)}
+
+/* How it works footer */
+.how{background:var(--cream-deep)}
+.how ul{list-style:none;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:20px}
+.how li{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);font-size:.92rem;color:var(--soil-light)}
+.how li strong{color:var(--soil)}
+
+footer.foot{background:var(--soil);color:#bcae97;text-align:center;padding:36px 20px;font-size:.88rem}
+footer.foot .spuds{font-size:1.6rem;margin-bottom:10px;color:var(--gold)}
+
+.gap{background:#fff6dd;border:1px dashed var(--gold-deep);color:var(--gold-deep);
+  padding:1px 7px;border-radius:6px;font-weight:600;font-size:.9em}
+
+@media(min-width:760px){
+  .hero-inner{padding:80px 0 96px}
+  section{padding:84px 0}
+}
+</style>
+<script id="factory-store-sdk">
+window.factory=(function(){
+var K="21278a70-fe12-4319-bc10-1e881ccc7493",U="https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/app-market",A="sb_publishable_sMTQKIeFgT1vwjHnU7Gexg_8CCmhtxs";
+function call(b){b.appKey=K;return fetch(U,{method:"POST",headers:{"Content-Type":"application/json","Authorization":"Bearer "+A},body:JSON.stringify(b)}).then(function(r){return r.json().then(function(d){if(!r.ok)throw new Error(d.error||("store "+r.status));return d;});});}
+var S={
+put:function(c,i,d){return call({op:"put",collection:c,id:String(i),data:d}).then(function(x){return x.doc?x.doc.data:null;});},
+get:function(c,i){return call({op:"get",collection:c,id:String(i)}).then(function(x){return x.doc?x.doc.data:null;});},
+list:function(c){return call({op:"list",collection:c}).then(function(x){return x.docs.map(function(d){return d.data;});});},
+remove:function(c,i){return call({op:"delete",collection:c,id:String(i)}).then(function(){return true;});},
+unlock:function(code){return call({op:"redeem",code:String(code)}).then(function(x){try{localStorage.setItem("factory_access",x.status);}catch(e){}return x.status;});},
+access:function(){try{return localStorage.getItem("factory_access")||"none";}catch(e){return "none";}}
+};
+var _c=null;try{var h=(location.hash||"").match(/factory_code=([a-z0-9-]+)/i);_c=h?h[1]:localStorage.getItem("factory_code");if(h){history.replaceState(null,"",location.pathname+location.search);}}catch(e){}
+var F={put:S.put,get:S.get,list:S.list,remove:S.remove,unlock:S.unlock,access:S.access};
+F.ready=_c?S.unlock(_c).then(function(s){try{if(s!=="invalid")localStorage.setItem("factory_code",_c);}catch(e){}return s;}).catch(function(){return S.access();}):Promise.resolve(S.access());
+return F;})();
+</script>
+<script id="factory-pay-sdk">
+(function(){var s=document.createElement("script");s.src="https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/app-pay?sdk=1&repo=make-an-app-fvam&v="+Math.floor(Date.now()/300000);s.async=true;document.head.appendChild(s);})();
+</script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="badge">🌱 Soil to sack in days — Rootfield Farm</span>
+    <h1>Honest, <span>home-grown</span><br>potatoes, grown with care.</h1>
+    <p class="lead">Earthy Maris Pipers, buttery Charlottes and fluffy roasters — lifted fresh from our fields and packed by hand. No cold storage months, no fuss. Just proper spuds for proper cooking.</p>
+    <div class="hero-cta">
+      <a href="#shop" class="btn btn-primary">Buy potatoes →</a>
+      <a href="#delivery" class="btn btn-ghost">Check delivery</a>
+    </div>
+    <div class="spuds" aria-hidden="true">🥔 🥔 🥔</div>
+  </div>
+</header>
+
+<!-- Varieties -->
+<section id="varieties">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our harvest</span>
+      <h2>Choose the right potato for the job</h2>
+      <p>Every variety has its moment. Here's what we grow and how it loves to be cooked.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="emoji" aria-hidden="true">🍟</div>
+        <h3>Maris Piper</h3>
+        <p>The all-rounder with a floury heart. Crisp-edged roasties, golden chips and mash that whips up light as a cloud.</p>
+        <span class="tag">Roast · Chip · Mash</span>
+      </div>
+      <div class="card">
+        <div class="emoji" aria-hidden="true">🥗</div>
+        <h3>Charlotte</h3>
+        <p>Firm, waxy and buttery. Holds its shape beautifully — the one you want for warm salads and gentle boiling.</p>
+        <span class="tag">Boil · Salad · Steam</span>
+      </div>
+      <div class="card">
+        <div class="emoji" aria-hidden="true">🥔</div>
+        <h3>King Edward</h3>
+        <p>A fluffy classic with a creamy bite. Bakes into pillowy jackets and roasts with a shattering crust.</p>
+        <span class="tag">Bake · Roast</span>
+      </div>
+      <div class="card">
+        <div class="emoji" aria-hidden="true">🍲</div>
+        <h3>Rooster</h3>
+        <p>Red-skinned and versatile. Rich, dry flesh that behaves in almost any dish — a weeknight workhorse.</p>
+        <span class="tag">Roast · Mash · Stew</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop -->
+<section id="shop" class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Farm shop</span>
+      <h2>Pick your sack</h2>
+      <p>Choose a size below and pay securely through the Factory. Your order drops straight into our packing list.</p>
+    </div>
+    <div class="shop-panel">
+      <div data-factory-pay></div>
+      <p class="shop-note">Prices and sacks are managed by the farm. Secure checkout — we never see your card details.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Delivery checker -->
+<section id="delivery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Will we reach you?</span>
+      <h2>Check your delivery zone</h2>
+      <p>Pop in your UK postcode. We deliver by van within 30 miles of the farm; further afield we send by courier.</p>
+    </div>
+    <div class="checker">
+      <label for="pc" style="position:absolute;left:-9999px">Postcode</label>
+      <input id="pc" type="text" placeholder="e.g. YO8 9AA" autocomplete="postal-code">
+      <button class="btn btn-primary" id="checkBtn" style="color:#2e2318">Check postcode</button>
+    </div>
+    <div class="result" id="pcResult" role="status" aria-live="polite"></div>
+    <p style="margin-top:14px;color:var(--soil-light);font-size:.9rem">
+      Farm base postcode: <span class="gap">[ADD YOUR FARM POSTCODE]</span> — update this so distances are measured from your gate.
+    </p>
+  </div>
+</section>
+
+<!-- How we pack -->
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Field to doorstep</span>
+      <h2>How your order reaches you</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><h3>Lifted fresh</h3><p>We harvest to order — your potatoes aren't sitting in cold store for months.</p></div></div>
+      <div class="step"><div class="num">2</div><div><h3>Hand-graded</h3><p>Sorted and brushed (never washed, so they keep longer) and weighed into breathable sacks.</p></div></div>
+      <div class="step"><div class="num">3</div><div><h3>Packed with care</h3><p>Paper sacks, recyclable throughout — kinder on the kitchen and the planet.</p></div></div>
+      <div class="step"><div class="num">4</div><div><h3>On its way</h3><p>Local van rounds or next-day courier, depending on your postcode zone.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section id="news">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Stay in the loop</span>
+      <h2>Harvest news & seasonal offers</h2>
+      <p>Join our list to hear when new-season potatoes are lifted and the odd gluts-for-a-good-price surprise. No spam, ever — just the farm.</p>
+    </div>
+    <form class="form-card" id="newsForm">
+      <div class="field">
+        <label for="n-name">Your name</label>
+        <input id="n-name" type="text" required placeholder="Jane Grower">
+      </div>
+      <div class="field">
+        <label for="n-email">Email</label>
+        <input id="n-email" type="email" required placeholder="jane@example.com">
+      </div>
+      <div class="field">
+        <label for="n-phone">Phone (optional)</label>
+        <input id="n-phone" type="tel" placeholder="Handy for delivery updates">
+      </div>
+      <div class="field">
+        <label for="n-note">Anything we should know? (optional)</label>
+        <textarea id="n-note" placeholder="Favourite variety, delivery notes…"></textarea>
+      </div>
+      <div class="check-row">
+        <input id="n-consent" type="checkbox">
+        <label for="n-consent">Tick to receive offers and news from Rootfield Farm. You can unsubscribe any time.</label>
+      </div>
+      <button type="submit" class="btn btn-primary" style="color:#2e2318">Join the list</button>
+      <div class="saveind" id="newsSave"></div>
+    </form>
+  </div>
+</section>
+
+<!-- Owner desk -->
+<section class="owner" id="owner">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--gold)">Farm team only</span>
+      <h2>Marketing desk</h2>
+      <p>Enter your owner code to view everyone who signed up and download your list.</p>
+    </div>
+    <div class="owner-box">
+      <div class="field">
+        <label for="o-code" style="color:var(--cream)">Owner code</label>
+        <input id="o-code" type="text" placeholder="Set or enter your code">
+      </div>
+      <button class="btn btn-primary" id="ownerBtn" style="color:#2e2318">Open desk</button>
+      <div id="ownerArea" style="display:none">
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 4px">
+          <button class="btn btn-ghost" id="csvBtn">⬇ Download CSV (consented)</button>
+          <span id="ownerCount" style="align-self:center;color:#cbbfa8"></span>
+        </div>
+        <div style="overflow-x:auto">
+          <table id="ownerTable"><thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Consent</th><th>Date</th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+      <p id="ownerMsg" style="color:#cbbfa8;font-size:.85rem;margin-top:12px"></p>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Behind the scenes</span>
+      <h2>How this app works</h2>
+    </div>
+    <ul>
+      <li><strong>Buying potatoes:</strong> sacks and prices live in the farm's Factory account. Pay buttons use the Factory's secure checkout — the app never touches your card.</li>
+      <li><strong>Delivery check:</strong> your postcode is geocoded by the Factory places service and the distance to the farm is measured to tell you your zone.</li>
+      <li><strong>Newsletter:</strong> sign-ups are saved to permanent Factory storage with your consent choice. Only people who ticked the box go into the marketing export.</li>
+      <li><strong>Owner desk:</strong> the farm sets a private code on first use to view sign-ups and download a CSV for their records.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="spuds" aria-hidden="true">🥔</div>
+  <p>Rootfield Farm · Grown with love, picked by hand.</p>
+  <p style="margin-top:6px">Address: <span class="gap">[ADD YOUR FARM ADDRESS]</span> · Opening hours: <span class="gap">[ADD OPENING HOURS]</span></p>
+</footer>
+
+<script>
+const PLACES="https://canvbkibjgcnqowjtarf.supabase.co/functions/v1/places-desk";
+
+/* ---- Delivery checker ---- */
+const FARM_POSTCODE=""; // owner to set; gap shown in UI until then
+const checkBtn=document.getElementById('checkBtn');
+const pcIn=document.getElementById('pc');
+const pcRes=document.getElementById('pcResult');
+
+function haversine(a,b,c,d){
+  const R=3958.8,r=Math.PI/180;
+  const dLat=(c-a)*r,dLon=(d-b)*r;
+  const x=Math.sin(dLat/2)**2+Math.cos(a*r)*Math.cos(c*r)*Math.sin(dLon/2)**2;
+  return 2*R*Math.asin(Math.sqrt(x));
+}
+async function geocode(q){
+  const r=await fetch(PLACES,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({op:"geocode",q})});
+  return r.json();
+}
+checkBtn.addEventListener('click',async()=>{
+  const pc=pcIn.value.trim();
+  pcRes.className='result';
+  if(!pc){pcRes.className='result show err';pcRes.textContent='Please enter a postcode first.';return;}
+  pcRes.className='result show';pcRes.style.background='#efe4cf';pcRes.style.color='#6b5942';
+  pcRes.textContent='Checking your postcode…';
+  try{
+    const dest=await geocode(pc);
+    if(!dest||!dest.ok){pcRes.className='result show err';pcRes.textContent='We couldn\'t find that postcode. Please check and try again.';return;}
+    if(!FARM_POSTCODE){
+      pcRes.className='result show ok';
+      pcRes.innerHTML='Found <strong>'+(dest.display||pc)+'</strong>. Set the farm\'s base postcode in the code to get exact delivery zones — meanwhile, head to the shop and order away!';
+      return;
+    }
+    const farm=await geocode(FARM_POSTCODE);
+    if(!farm||!farm.ok){pcRes.className='result show err';pcRes.textContent='We had trouble locating the farm base. Please try again shortly.';return;}
+    const miles=haversine(farm.lat,farm.lon,dest.lat,dest.lon);
+    const m=Math.round(miles);
+    if(miles<=30){
+      pcRes.className='result show ok';
+      pcRes.innerHTML='🚚 Great news — you\'re about <strong>'+m+' miles</strong> away, inside our local van zone!';
+    }else{
+      pcRes.className='result show no';
+      pcRes.innerHTML='📦 You\'re about <strong>'+m+' miles</strong> away — beyond our van rounds, so we\'ll send your sack by courier.';
+    }
+  }catch(e){
+    pcRes.className='result show err';pcRes.textContent='Something went wrong checking that. Please try again in a moment.';
+  }
+});
+pcIn.addEventListener('keydown',e=>{if(e.key==='Enter')checkBtn.click();});
+
+/* ---- Newsletter ---- */
+const newsForm=document.getElementById('newsForm');
+const newsSave=document.getElementById('newsSave');
+newsForm.addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const name=document.getElementById('n-name').value.trim();
+  const email=document.getElementById('n-email').value.trim();
+  const phone=document.getElementById('n-phone').value.trim();
+  const note=document.getElementById('n-note').value.trim();
+  const consent=document.getElementById('n-consent').checked;
+  if(!name||!email){newsSave.textContent='Please add your name and email.';return;}
+  newsSave.textContent='Saving…';
+  const id=String(Date.now());
+  try{
+    await factory.put('contacts',id,{name,email,phone,note,consent,date:new Date().toISOString()});
+    newsSave.textContent='✓ Thank you, '+name.split(' ')[0]+'! You\'re on the list.';
+    newsForm.reset();
+  }catch(err){
+    newsSave.textContent='Sorry, we couldn\'t save that. Please try again.';
+  }
+});
+
+/* ---- Owner desk ---- */
+const ownerBtn=document.getElementById('ownerBtn');
+const ownerArea=document.getElementById('ownerArea');
+const ownerMsg=document.getElementById('ownerMsg');
+const ownerCount=document.getElementById('ownerCount');
+let contactsCache=[];
+
+ownerBtn.addEventListener('click',async()=>{
+  const code=document.getElementById('o-code').value.trim();
+  if(!code){ownerMsg.textContent='Enter a code to continue.';return;}
+  ownerMsg.textContent='Checking…';
+  try{
+    let stored=await factory.get('settings','ownerCode');
+    if(!stored){
+      await factory.put('settings','ownerCode',{code});
+      ownerMsg.textContent='Owner code set. Keep it safe — you\'ll need it next time.';
+    }else if(stored.code!==code){
+      ownerMsg.textContent='That code doesn\'t match. Try again.';
+      ownerArea.style.display='none';
+      return;
+    }else{
+      ownerMsg.textContent='';
+    }
+    const list=await factory.list('contacts');
+    contactsCache=list||[];
+    renderOwner();
+    ownerArea.style.display='block';
+  }catch(e){
+    ownerMsg.textContent='Could not open the desk. Please try again.';
+  }
+});
+
+function renderOwner(){
+  const tb=document.querySelector('#ownerTable tbody');
+  tb.innerHTML='';
+  contactsCache.forEach(c=>{
+    const tr=document.createElement('tr');
+    const d=c.date?new Date(c.date).toLocaleDateString():'';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td>'+esc(c.email)+'</td><td>'+esc(c.phone||'')+'</td><td>'+(c.consent?'Yes':'No')+'</td><td>'+d+'</td>';
+    tb.appendChild(tr);
+  });
+  const consented=contactsCache.filter(c=>c.consent).length;
+  ownerCount.textContent=contactsCache.length+' sign-ups · '+consented+' consented';
+}
+function esc(s){return String(s).replace(/[<>&"]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[m]));}
+
+document.getElementById('csvBtn').addEventListener('click',()=>{
+  const rows=contactsCache.filter(c=>c.consent);
+  if(!rows.length){alert('No consented contacts to export yet.');return;}
+  let csv='Name,Email,Phone,Consent,Date\n';
+  rows.forEach(c=>{
+    const d=c.date?new Date(c.date).toISOString():'';
+    csv+=[q(c.name),q(c.email),q(c.phone||''),'Yes',q(d)].join(',')+'\n';
+  });
+  const blob=new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='rootfield-contacts.csv';a.click();
+  URL.revokeObjectURL(a.href);
+});
+function q(s){return '"'+String(s).replace(/"/g,'""')+'"';}
+
+/* Confirm on payment */
+window.addEventListener('factory:paid',e=>{
+  const d=e.detail||{};
+  const panel=document.querySelector('.shop-note');
+  if(panel){panel.textContent='🥔 Thank you! Your '+(d.product||'order')+' is booked onto our packing list.';panel.style.color='#53692f';panel.style.fontWeight='600';}
+});
+</script>
+<div id="factory-provenance" style="padding:14px 16px;text-align:center;font:11px/1.7 system-ui,sans-serif;color:#888;opacity:.85;">&#9874; Built with <a href="https://thefactory.refereeinnovations.com" style="color:#888;">The Factory</a> using third-party AI tools &#183; the app owner is responsible for its content &#183; Standard: UK law, aligned with the UN Universal Declaration of Human Rights &#183; <a href="https://thefactory.refereeinnovations.com/terms.html" style="color:#888;">Terms</a></div>
+</body>
+</html>
